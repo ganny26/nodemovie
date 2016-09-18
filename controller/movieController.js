@@ -26,9 +26,23 @@ var add = function (req, res) {
     });
 }
 
+var getById = function (req, res) {
+    movie.findById(req.params.id, function (err, movie) {
+        if (err) {
+            res.status(404);
+            res.send('not found');
+        }
+        else {
+            res.status(200);
+            res.send(movie);
+        }
+    });
+}
+
 //module.exports = get;
 
 module.exports = {
     get: get,
-    add: add
+    add: add,
+    getById: getById
 }

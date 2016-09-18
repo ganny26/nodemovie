@@ -7,5 +7,8 @@ movieRoute.route('')
     .get(movieController.get)
     .post(movieController.add);
 
+movieRoute.route('/:id')
+    .get(movieController.getById);
+
 
 module.exports = movieRoute;
