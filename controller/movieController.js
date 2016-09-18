@@ -66,9 +66,33 @@ var updateById = function (req, res) {
     })
 }
 
+var patchRequest = function(req,res){
+    movie.findById(req.param.id,function(err,movies){
+        if(req.body._id){
+            delete req.body._id;
+        }
+        if(!err){
+            for(var property in req.body){
+                movies[property] = req.body[property];
+            }
+            movie.save(function(err){
+                if(!err){
+                    res.status(200);
+                    res.send('updated');
+                }
+                else{
+                    res.status(400);
+                    res.send('invalid erquest');
+                }
+            });
+        }
+    })
+}
+
 module.exports = {
     get: get,
     add: add,
     getById: getById,
-    updateById: updateById 
+    updateById: updateById,
+    patchRequest: patchRequest
 }

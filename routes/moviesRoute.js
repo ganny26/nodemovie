@@ -9,7 +9,8 @@ movieRoute.route('')
 
 movieRoute.route('/:id')
     .get(movieController.getById)
-    .put(movieController.updateById);
+    .put(movieController.updateById)
+    .patch(movieController.patchRequest)
 
 
 module.exports = movieRoute;
