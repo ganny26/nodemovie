@@ -39,10 +39,36 @@ var getById = function (req, res) {
     });
 }
 
-//module.exports = get;
+var updateById = function (req, res) {
+    movie.findById(function (err, movies) {
+        if (err) {
+            res.status(500);
+            res.send('update error');
+        }
+        else {
+            movies.title = req.body.title;
+            movies.rating = req.body.rating;
+            movies.year = req.body.year;
+            movies.isReleased = req.body.isReleased;
+
+            movies.save(function (err) {
+                if (!err) {
+                    res.status(200);
+                    res.send(movies);
+                }
+                else {
+                    res.status(500);
+                    res.send('failed to update');
+                }
+            });
+        }
+
+    })
+}
 
 module.exports = {
     get: get,
     add: add,
-    getById: getById
+    getById: getById,
+    updateById: updateById 
 }
