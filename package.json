@@ -1,0 +1,19 @@
+{
+  "name": "noderestapi",
+  "version": "1.0.0",
+  "description": "rest api in node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.paypal.com:serajam/noderestapi.git"
+  },
+  "author": "serajam",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
